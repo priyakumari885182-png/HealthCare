@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PulseCare | Online Healthcare Management System</title>
+  <meta name="description" content="Online Healthcare Management System - Complete role-based platform for patients, doctors, and healthcare administrators.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ========================================================================= -->
+  <!-- TOAST NOTIFICATION CONTAINER                                              -->
+  <!-- ========================================================================= -->
+  <div class="toast-stack" id="toastStack" aria-live="polite"></div>
+
+  <!-- ========================================================================= -->
+  <!-- 1. PUBLIC LANDING PAGE VIEW (#/)                                          -->
+  <!-- ========================================================================= -->
+  <div id="viewLanding" class="app-view">
+    <!-- Landing Navbar -->
+    <header class="public-navbar">
+      <div class="nav-container">
+        <a href="#/" class="nav-brand">
+          <div class="brand-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
+              <path d="M12 5v14"/>
+              <path d="M5 12h14"/>
+            </svg>
+          </div>
+          <div class="brand-text">
+            <span class="brand-title">PulseCare</span>
+            <span class="brand-subtitle">Health System</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="public-nav-links">
+          <a href="#/" class="nav-link" id="linkHome">Home</a>
+          <a href="#about" class="nav-link" id="linkAbout">About</a>
+          <a href="#services" class="nav-link" id="linkServices">Services</a>
+          <a href="#contact" class="nav-link" id="linkContact">Contact</a>
+        </nav>
+
+        <!-- Navbar Action Buttons -->
+        <div class="public-nav-actions" id="publicNavAuthButtons">
+          <a href="#/login" class="btn btn-outline" id="navBtnLogin">Login</a>
+          <a href="#/register" class="btn btn-primary" id="navBtnRegister">Register</a>
+        </div>
+        <!-- Shown if user is already logged in -->
+        <div class="public-nav-actions" id="publicNavDashboardButton" style="display: none;">
+          <button class="btn btn-primary" id="btnGoToMyDashboard">Go to My Dashboard →</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="home">
+      <div class="hero-container">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span class="badge-dot"></span> Next-Generation Clinical Management
+          </div>
+          <h1 class="hero-title">Online Healthcare Management System</h1>
+          <p class="hero-description">
+            A unified digital clinical platform enabling patients to effortlessly book appointments, doctors to manage clinical schedules and medical records, and administrators to oversee hospital operations with real-time operational analytics.
+          </p>
+          <div class="hero-cta-group">
+            <button class="btn btn-primary btn-lg" id="heroBtnBookAppt">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              Book Appointment
+            </button>
+            <a href="#/register" class="btn btn-outline btn-lg" id="heroBtnGetStarted">Get Started Free</a>
+          </div>
+
+          <div class="hero-highlights">
+            <div class="highlight-item">
+              <strong>15,000+</strong>
+              <span>Patient Consults</span>
+            </div>
+            <div class="highlight-item">
+              <strong>99.4%</strong>
+              <span>On-Time Rate</span>
+            </div>
+            <div class="highlight-item">
+              <strong>50+</strong>
+              <span>Specialist Doctors</span>
+            </div>
+            <div class="highlight-item">
+              <strong>24/7</strong>
+              <span>Secure Digital EHR</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-card-preview glass-card">
+            <div class="preview-header">
+              <div class="doc-avatar-badge">SM</div>
+              <div>
+                <strong>Dr. Sarah Mitchell, MD</strong>
+                <small>Senior Cardiologist • Room 304</small>
+              </div>
+              <span class="badge badge-status-confirmed">Available Today</span>
+            </div>
+            <div class="preview-metric-row">
+              <div class="preview-metric">
+                <span>Next Open Slot</span>
+                <strong>10:00 AM</strong>
+              </div>
+              <div class="preview-metric">
+                <span>Patient Rating</span>
+                <strong class="text-amber">★ 4.9 (24 Reviews)</strong>
+              </div>
+            </div>
+            <div class="preview-slots">
+              <span class="slot-chip active">09:30 AM</span>
+              <span class="slot-chip active">10:00 AM</span>
+              <span class="slot-chip active">11:30 AM</span>
+              <span class="slot-chip disabled">02:00 PM (Booked)</span>
+            </div>
+            <button class="btn btn-primary btn-block btn-sm" id="btnHeroQuickBook">Instant Consultation Booking</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section" id="services">
+      <div class="section-container">
+        <div class="section-title-wrap text-center">
+          <span class="section-subtitle">Clinical Capabilities</span>
+          <h2 class="section-title">Core Healthcare Services</h2>
+          <p class="section-desc">Designed with specialized workflows for patients, physicians, and administrative teams.</p>
+        </div>
+
+        <div class="services-grid">
+          <!-- Service 1: Appointment Booking -->
+          <div class="service-card">
+            <div class="service-icon icon-cyan">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </div>
+            <h3>Appointment Booking</h3>
+            <p>Smart consultation booking with live slot detection, instant conflict prevention, and multi-channel notifications.</p>
+            <ul class="feature-bullets">
+              <li>✓ Real-time doctor schedule visibility</li>
+              <li>✓ In-person & Telehealth options</li>
+              <li>✓ Automatic schedule conflict blocking</li>
+            </ul>
+          </div>
+
+          <!-- Service 2: Doctor Management -->
+          <div class="service-card">
+            <div class="service-icon icon-blue">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <h3>Doctor Management</h3>
+            <p>Dedicated physician portals for calendar scheduling, custom block time buffers, and patient triage queues.</p>
+            <ul class="feature-bullets">
+              <li>✓ Dynamic shift & break management</li>
+              <li>✓ One-click consultation completion</li>
+              <li>✓ Verified patient feedback analytics</li>
+            </ul>
+          </div>
+
+          <!-- Service 3: Medical Records -->
+          <div class="service-card">
+            <div class="service-icon icon-emerald">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            </div>
+            <h3>Medical Records (EHR)</h3>
+            <p>Centralized electronic medical records including vital sign tracking, diagnostic notes, and verified prescription slips.</p>
+            <ul class="feature-bullets">
+              <li>✓ Timestamped physician diagnoses</li>
+              <li>✓ Digital medication slips with dosages</li>
+              <li>✓ Read-only patient access security</li>
+            </ul>
+          </div>
+
+          <!-- Service 4: Healthcare Dashboard -->
+          <div class="service-card">
+            <div class="service-icon icon-amber">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+            </div>
+            <h3>Healthcare Dashboard</h3>
+            <p>Complete hospital oversight with real-time analytics, user access controls, and hospital-wide operational metrics.</p>
+            <ul class="feature-bullets">
+              <li>✓ Live department workload charts</li>
+              <li>✓ Hospital operating hours config</li>
+              <li>✓ Multi-role user administration</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+      <div class="section-container">
+        <div class="about-grid">
+          <div class="about-content">
+            <span class="section-subtitle">About PulseCare</span>
+            <h2 class="section-title">Committed to Clinical Excellence & Patient Care</h2>
+            <p class="section-desc">
+              PulseCare was founded to bridge the operational gap between outpatient demand and physician schedules. Our platform provides a modern healthcare management architecture trusted by regional clinics and medical centers.
+            </p>
+            <div class="about-checkmarks">
+              <div class="check-item">
+                <div class="check-icon">✓</div>
+                <div>
+                  <strong>JCI & HIPAA Aligned</strong>
+                  <p>Ensuring patient privacy and strict role-based data security protocols.</p>
+                </div>
+              </div>
+              <div class="check-item">
+                <div class="check-icon">✓</div>
+                <div>
+                  <strong>Zero-Friction Scheduling</strong>
+                  <p>Eliminate double bookings, long wait queues, and manual scheduling paperwork.</p>
+                </div>
+              </div>
+              <div class="check-item">
+                <div class="check-icon">✓</div>
+                <div>
+                  <strong>Complete Clinical Audit Trail</strong>
+                  <p>Every consultation status, prescription update, and reschedule is logged in real-time.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="about-stats-card glass-card">
+            <h3>Hospital Facility Overview</h3>
+            <p class="facility-name">PulseCare Regional Medical Center</p>
+            <div class="facility-info-row">
+              <span>Primary License:</span>
+              <strong>HC-99201-GLOBAL</strong>
+            </div>
+            <div class="facility-info-row">
+              <span>Clinical Divisions:</span>
+              <strong>Cardiology, Neurology, Pediatrics, Orthopedics, General Practice</strong>
+            </div>
+            <div class="facility-info-row">
+              <span>Consultation Windows:</span>
+              <strong>08:00 AM – 06:00 PM (Mon - Sat)</strong>
+            </div>
+            <div class="facility-info-row">
+              <span>Patient Satisfaction:</span>
+              <strong class="text-success">98.6% Positive Feedback</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+      <div class="section-container">
+        <div class="section-title-wrap text-center">
+          <span class="section-subtitle">Get In Touch</span>
+          <h2 class="section-title">Contact Hospital Help Desk</h2>
+          <p class="section-desc">Have questions about clinical scheduling, insurance coverage, or patient registration? Reach out to our 24/7 team.</p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-info-card">
+            <h3>Facility Information</h3>
+            <p>Our dedicated administration desk is ready to assist patients and medical professionals.</p>
+            <div class="info-block">
+              <strong>Emergency Hotline:</strong>
+              <p>+1 (800) 555-0199 (Toll Free 24/7)</p>
+            </div>
+            <div class="info-block">
+              <strong>Clinic Support Email:</strong>
+              <p>support@pulsecare.org</p>
+            </div>
+            <div class="info-block">
+              <strong>Main Medical Campus:</strong>
+              <p>124 Medical Park Boulevard, Suite 500, Healthcare Plaza</p>
+            </div>
+            <div class="info-block">
+              <strong>Emergency Triage Hours:</strong>
+              <p>Open 24 Hours • 7 Days a Week</p>
+            </div>
+          </div>
+
+          <div class="contact-form-card">
+            <h3>Send Support Message</h3>
+            <form id="publicContactForm">
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label for="contactName">Your Name</label>
+                  <input type="text" id="contactName" class="form-input" placeholder="e.g. John Doe" required>
+                </div>
+                <div class="form-group">
+                  <label for="contactEmail">Your Email</label>
+                  <input type="email" id="contactEmail" class="form-input" placeholder="e.g. john@example.com" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="contactSubject">Subject</label>
+                <input type="text" id="contactSubject" class="form-input" placeholder="e.g. Appointment Inquiry or Insurance Verification" required>
+              </div>
+              <div class="form-group">
+                <label for="contactMessage">Message</label>
+                <textarea id="contactMessage" class="form-textarea" rows="4" placeholder="How can our clinical team help you today?" required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary btn-block" id="btnSubmitContact">Send Message to Support</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Public Footer -->
+    <footer class="public-footer">
+      <div class="footer-container">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <div class="brand-text">
+              <span class="brand-title">PulseCare</span>
+              <span class="brand-subtitle">Health Management System</span>
+            </div>
+            <p>Empowering healthcare delivery with real-time scheduling, patient engagement, and clinical administration.</p>
+          </div>
+          <div class="footer-col">
+            <h4>Quick Navigation</h4>
+            <ul>
+              <li><a href="#/">Home</a></li>
+              <li><a href="#about">About Facility</a></li>
+              <li><a href="#services">Clinical Services</a></li>
+              <li><a href="#contact">Contact Support</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Access Portals</h4>
+            <ul>
+              <li><a href="#/login">Patient Login</a></li>
+              <li><a href="#/login">Doctor Portal</a></li>
+              <li><a href="#/login">Admin Console</a></li>
+              <li><a href="#/register">New Patient Registration</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Emergency Contact</h4>
+            <p><strong>Hotline:</strong> +1 (800) 555-0199</p>
+            <p><strong>Email:</strong> clinical@pulsecare.org</p>
+            <p><strong>Location:</strong> 124 Medical Park Blvd</p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2026 PulseCare Healthcare System • Built for GUVI Geek Network Project Submission • HIPAA Aligned</p>
+          <div class="footer-bottom-links">
+            <a href="#/" id="linkPrivacy">Privacy Policy</a>
+            <span>•</span>
+            <a href="#/" id="linkTerms">Terms of Clinical Service</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- 2. AUTHENTICATION VIEWS (#/login and #/register)                          -->
+  <!-- ========================================================================= -->
+
+  <!-- Login View -->
+  <div id="viewLogin" class="app-view auth-page-view" style="display: none;">
+    <div class="auth-card-container">
+      <div class="auth-card">
+        <div class="auth-header">
+          <a href="#/" class="auth-back-link">← Back to Home</a>
+          <div class="auth-brand-logo">
+            <div class="brand-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+            </div>
+            <h2>Welcome Back to PulseCare</h2>
+          </div>
+          <p>Sign in to access your role-protected healthcare dashboard.</p>
+        </div>
+
+        <!-- Quick Demo Credentials Box -->
+        <div class="demo-logins-box">
+          <span class="demo-box-label">⚡ Quick 1-Click Demo Login:</span>
+          <div class="demo-btns-row">
+            <button type="button" class="btn btn-outline-sm" id="btnQuickLoginAdmin">👤 Admin</button>
+            <button type="button" class="btn btn-outline-sm" id="btnQuickLoginDoctor">🩺 Doctor</button>
+            <button type="button" class="btn btn-outline-sm" id="btnQuickLoginPatient">🧑 Patient</button>
+          </div>
+        </div>
+
+        <form id="authLoginForm" class="auth-form">
+          <div class="form-group">
+            <label for="loginEmail">Email Address</label>
+            <input type="email" id="loginEmail" class="form-input" placeholder="name@pulsecare.org" required autocomplete="email">
+          </div>
+          <div class="form-group">
+            <label for="loginPassword">Password</label>
+            <div class="password-input-wrapper">
+              <input type="password" id="loginPassword" class="form-input" placeholder="Enter your password" required autocomplete="current-password">
+              <button type="button" class="btn-toggle-pwd" id="btnToggleLoginPwd">👁️</button>
+            </div>
+          </div>
+          <div id="loginErrorMessage" class="auth-error-banner" style="display: none;"></div>
+          <button type="submit" class="btn btn-primary btn-block btn-lg" id="btnSubmitLogin">Sign In to Dashboard →</button>
+        </form>
+
+        <div class="auth-footer-text">
+          <p>Don't have an account? <a href="#/register">Register for free</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Registration View -->
+  <div id="viewRegister" class="app-view auth-page-view" style="display: none;">
+    <div class="auth-card-container">
+      <div class="auth-card">
+        <div class="auth-header">
+          <a href="#/" class="auth-back-link">← Back to Home</a>
+          <div class="auth-brand-logo">
+            <div class="brand-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+            </div>
+            <h2>Create Your PulseCare Account</h2>
+          </div>
+          <p>Register as a patient, physician, or hospital administrator.</p>
+        </div>
+
+        <form id="authRegisterForm" class="auth-form">
+          <div class="form-group">
+            <label for="regFullName">Full Name</label>
+            <input type="text" id="regFullName" class="form-input" placeholder="e.g. Sarah Mitchell or Alex Johnson" required>
+          </div>
+          <div class="form-group">
+            <label for="regEmail">Email Address</label>
+            <input type="email" id="regEmail" class="form-input" placeholder="e.g. name@example.com" required autocomplete="email">
+          </div>
+          <div class="form-row-2">
+            <div class="form-group">
+              <label for="regPassword">Password</label>
+              <input type="password" id="regPassword" class="form-input" placeholder="Minimum 6 characters" required minlength="6">
+            </div>
+            <div class="form-group">
+              <label for="regConfirmPassword">Confirm Password</label>
+              <input type="password" id="regConfirmPassword" class="form-input" placeholder="Re-enter password" required minlength="6">
+            </div>
+          </div>
+          <div class="form-row-2">
+            <div class="form-group">
+              <label for="regRole">Select Role</label>
+              <select id="regRole" class="form-select" required>
+                <option value="Patient" selected>Patient (Book appointments & medical history)</option>
+                <option value="Doctor">Doctor (Manage schedules & consultations)</option>
+                <option value="Admin">Administrator (Hospital operations & users)</option>
+              </select>
+            </div>
+            <div class="form-group" id="regDoctorDeptGroup" style="display: none;">
+              <label for="regSpecialty">Medical Specialty</label>
+              <select id="regSpecialty" class="form-select">
+                <option value="Cardiology">Cardiology</option>
+                <option value="Neurology">Neurology</option>
+                <option value="Pediatrics">Pediatrics</option>
+                <option value="Orthopedics">Orthopedics</option>
+                <option value="General Medicine">General Medicine</option>
+              </select>
+            </div>
+          </div>
+          <div id="registerErrorMessage" class="auth-error-banner" style="display: none;"></div>
+          <button type="submit" class="btn btn-primary btn-block btn-lg" id="btnSubmitRegister">Complete Registration →</button>
+        </form>
+
+        <div class="auth-footer-text">
+          <p>Already have an account? <a href="#/login">Log in here</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- 3. UNAUTHORIZED / 403 ACCESS DENIED VIEW (#/unauthorized)                -->
+  <!-- ========================================================================= -->
+  <div id="viewUnauthorized" class="app-view auth-page-view" style="display: none;">
+    <div class="auth-card-container">
+      <div class="auth-card text-center">
+        <div class="unauthorized-icon">🚫</div>
+        <h2>Access Restricted</h2>
+        <p>You do not have permission to access this dashboard with your current account role.</p>
+        <div class="button-group" style="justify-content: center; margin-top: 1.5rem;">
+          <button class="btn btn-primary" id="btnUnauthGoDashboard">Go to My Dashboard</button>
+          <a href="#/login" class="btn btn-outline" id="btnUnauthSwitchAccount">Sign In With Another Account</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- 4. PROTECTED DASHBOARD APP SHELL (#/admin, #/doctor, #/patient)          -->
+  <!-- ========================================================================= -->
+  <div id="viewDashboardShell" class="app-view dashboard-shell" style="display: none;">
+    
+    <!-- Collapsible Sidebar -->
+    <aside class="dashboard-sidebar" id="dashboardSidebar">
+      <div class="sidebar-brand">
+        <a href="#/" class="sidebar-logo">
+          <div class="brand-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+          </div>
+          <span class="brand-title">PulseCare</span>
+        </a>
+      </div>
+
+      <!-- Current User Profile Card in Sidebar -->
+      <div class="sidebar-user-card">
+        <div class="sidebar-avatar" id="sidebarAvatar">US</div>
+        <div class="sidebar-user-meta">
+          <strong id="sidebarUserName">User Name</strong>
+          <span class="sidebar-role-badge" id="sidebarUserRole">Role</span>
+        </div>
+      </div>
+
+      <!-- Dynamic Sidebar Menu Navigation Links -->
+      <nav class="sidebar-nav" id="sidebarNavMenu">
+        <!-- Rendered dynamically by JavaScript based on active role -->
+      </nav>
+
+      <!-- Sidebar Bottom Action -->
+      <div class="sidebar-footer">
+        <button class="sidebar-logout-btn" id="btnSidebarLogout">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+          Sign Out
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Dashboard Stage -->
+    <div class="dashboard-main-stage">
+      
+      <!-- Top Dashboard Header Bar -->
+      <header class="dashboard-topbar">
+        <div class="topbar-left">
+          <button class="mobile-menu-toggle" id="btnToggleSidebar">☰</button>
+          <div class="topbar-breadcrumbs">
+            <span id="topbarPortalName">Portal</span>
+            <span class="crumb-separator">/</span>
+            <strong id="topbarPageTitle">Dashboard</strong>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <!-- Notification Bell Dropdown Button -->
+          <div class="notification-bell-wrapper">
+            <button class="btn-icon bell-btn" id="btnNotificationBell" title="View Notifications">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+              <span class="notification-badge" id="notificationBadge" style="display: none;">0</span>
+            </button>
+
+            <!-- Notifications Dropdown Panel -->
+            <div class="notifications-panel" id="notificationsPanel">
+              <div class="notif-header">
+                <strong>Activity Notifications</strong>
+                <button class="btn-clear-notif" id="btnClearNotifications">Mark all read</button>
+              </div>
+              <div class="notif-list" id="notificationsList">
+                <p class="empty-notif-text">No new notifications</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick User Avatar & Logout Pill -->
+          <div class="topbar-user-pill">
+            <div class="avatar-sm" id="topbarAvatar">US</div>
+            <span class="user-display-name" id="topbarUserName">User</span>
+            <button class="btn btn-outline-sm btn-logout-top" id="btnTopLogout" title="Logout">Logout</button>
+          </div>
+        </div>
+      </header>
+
+      <!-- Dashboard Dynamic Content Viewport -->
+      <main class="dashboard-viewport" id="dashboardViewport">
+        <!-- Rendered dynamically according to role & active sidebar tab -->
+      </main>
+
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- MODAL DIALOGS                                                             -->
+  <!-- ========================================================================= -->
+
+  <!-- Modal: Add / Edit User (Admin) -->
+  <div class="modal-backdrop" id="modalUserManage">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 id="modalUserTitle">Add New System User</h3>
+        <button class="modal-close-btn" data-modal="modalUserManage">&times;</button>
+      </div>
+      <form id="adminUserForm">
+        <input type="hidden" id="editUserId">
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="adminUserModalName">Full Name</label>
+            <input type="text" id="adminUserModalName" class="form-input" required placeholder="e.g. Dr. Robert Chen or John Smith">
+          </div>
+          <div class="form-group">
+            <label for="adminUserModalEmail">Email Address</label>
+            <input type="email" id="adminUserModalEmail" class="form-input" required placeholder="e.g. name@pulsecare.org">
+          </div>
+          <div class="form-group" id="adminUserPwdGroup">
+            <label for="adminUserModalPassword">Password</label>
+            <input type="password" id="adminUserModalPassword" class="form-input" placeholder="Set user password">
+          </div>
+          <div class="form-row-2">
+            <div class="form-group">
+              <label for="adminUserModalRole">Role</label>
+              <select id="adminUserModalRole" class="form-select" required>
+                <option value="Patient">Patient</option>
+                <option value="Doctor">Doctor</option>
+                <option value="Admin">Administrator</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="adminUserModalStatus">Status</label>
+              <select id="adminUserModalStatus" class="form-select">
+                <option value="Active">Active</option>
+                <option value="Inactive">Inactive</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group" id="adminUserModalDeptGroup" style="display: none;">
+            <label for="adminUserModalSpecialty">Specialization (if Doctor)</label>
+            <select id="adminUserModalSpecialty" class="form-select">
+              <option value="Cardiology">Cardiology</option>
+              <option value="Neurology">Neurology</option>
+              <option value="Pediatrics">Pediatrics</option>
+              <option value="Orthopedics">Orthopedics</option>
+              <option value="General Medicine">General Medicine</option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" data-modal="modalUserManage">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="btnSaveUserModal">Save User</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: View User Details (Admin) -->
+  <div class="modal-backdrop" id="modalViewUserDetails">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3>User Profile Details</h3>
+        <button class="modal-close-btn" data-modal="modalViewUserDetails">&times;</button>
+      </div>
+      <div class="modal-body" id="viewUserDetailsBody">
+        <!-- Rendered via JS -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-modal="modalViewUserDetails">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Admin Schedule / Reschedule Appointment -->
+  <div class="modal-backdrop" id="modalAdminAppt">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 id="modalAdminApptTitle">Schedule New Appointment</h3>
+        <button class="modal-close-btn" data-modal="modalAdminAppt">&times;</button>
+      </div>
+      <form id="adminApptForm">
+        <input type="hidden" id="adminApptEditId">
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="adminApptPatientSelect">Select Patient</label>
+            <select id="adminApptPatientSelect" class="form-select" required></select>
+          </div>
+          <div class="form-group">
+            <label for="adminApptDoctorSelect">Select Doctor</label>
+            <select id="adminApptDoctorSelect" class="form-select" required></select>
+          </div>
+          <div class="form-row-2">
+            <div class="form-group">
+              <label for="adminApptDate">Date</label>
+              <input type="date" id="adminApptDate" class="form-input" required>
+            </div>
+            <div class="form-group">
+              <label for="adminApptTime">Time Slot</label>
+              <select id="adminApptTime" class="form-select" required>
+                <option value="09:00 AM">09:00 AM</option>
+                <option value="09:30 AM">09:30 AM</option>
+                <option value="10:00 AM">10:00 AM</option>
+                <option value="10:30 AM">10:30 AM</option>
+                <option value="11:00 AM">11:00 AM</option>
+                <option value="11:30 AM">11:30 AM</option>
+                <option value="02:00 PM">02:00 PM</option>
+                <option value="02:30 PM">02:30 PM</option>
+                <option value="03:00 PM">03:00 PM</option>
+                <option value="03:30 PM">03:30 PM</option>
+                <option value="04:00 PM">04:00 PM</option>
+                <option value="04:30 PM">04:30 PM</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="adminApptReason">Reason for Consultation</label>
+            <textarea id="adminApptReason" class="form-textarea" rows="2" placeholder="e.g. Routine cardiology follow-up" required></textarea>
+          </div>
+          <div class="form-group" id="adminApptStatusRow" style="display: none;">
+            <label for="adminApptStatus">Appointment Status</label>
+            <select id="adminApptStatus" class="form-select">
+              <option value="Pending">Pending</option>
+              <option value="Confirmed">Confirmed</option>
+              <option value="Completed">Completed</option>
+              <option value="Cancelled">Cancelled</option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" data-modal="modalAdminAppt">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="btnSaveAdminAppt">Save Appointment</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: View Appointment Details -->
+  <div class="modal-backdrop" id="modalViewApptDetails">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3>Consultation Details</h3>
+        <button class="modal-close-btn" data-modal="modalViewApptDetails">&times;</button>
+      </div>
+      <div class="modal-body" id="viewApptDetailsBody">
+        <!-- Injected via JS -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-modal="modalViewApptDetails">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Doctor Add/Update Medical Record -->
+  <div class="modal-backdrop" id="modalDocMedicalRecord">
+    <div class="modal-dialog modal-dialog-lg">
+      <div class="modal-header">
+        <h3 id="modalDocRecordTitle">Clinical Consultation & Electronic Medical Record</h3>
+        <button class="modal-close-btn" data-modal="modalDocMedicalRecord">&times;</button>
+      </div>
+      <form id="docMedicalRecordForm">
+        <input type="hidden" id="docRecordPatientId">
+        <div class="modal-body">
+          <div class="form-row-2">
+            <div class="form-group">
+              <label>Patient</label>
+              <input type="text" id="docRecordPatientName" class="form-input" readonly>
+            </div>
+            <div class="form-group">
+              <label for="docRecordDate">Consultation Date</label>
+              <input type="date" id="docRecordDate" class="form-input" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="docRecordDiagnosis">Diagnosis</label>
+            <input type="text" id="docRecordDiagnosis" class="form-input" placeholder="e.g. Essential Hypertension (Stage 1)" required>
+          </div>
+          <div class="form-group">
+            <label for="docRecordSymptoms">Chief Symptoms / Clinical Presentation</label>
+            <textarea id="docRecordSymptoms" class="form-textarea" rows="2" placeholder="e.g. Occasional chest tightness, elevated morning BP, fatigue" required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="docRecordPrescription">Prescription & Medication Regimen</label>
+            <textarea id="docRecordPrescription" class="form-textarea" rows="2" placeholder="e.g. Telmisartan 40mg - 1 tablet daily in the morning (30 days)" required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="docRecordNotes">Doctor Clinical Notes & Recommendations</label>
+            <textarea id="docRecordNotes" class="form-textarea" rows="2" placeholder="e.g. Dietary sodium reduction, routine walking 30 min daily. Follow-up in 4 weeks."></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" data-modal="modalDocMedicalRecord">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="btnSaveDocMedicalRecord">Save Medical Record</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: Patient Submit Feedback -->
+  <div class="modal-backdrop" id="modalPatientFeedback">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3>Rate Your Consultation Experience</h3>
+        <button class="modal-close-btn" data-modal="modalPatientFeedback">&times;</button>
+      </div>
+      <form id="patientFeedbackForm">
+        <input type="hidden" id="feedbackApptId">
+        <input type="hidden" id="feedbackDoctorId">
+        <div class="modal-body">
+          <p id="feedbackDoctorTitle" class="modal-desc">Share your feedback to help us maintain clinical excellence.</p>
+          <div class="form-group text-center">
+            <label>Star Rating</label>
+            <div class="star-rating-selector" id="starRatingSelector">
+              <span class="star-btn active" data-stars="1">★</span>
+              <span class="star-btn active" data-stars="2">★</span>
+              <span class="star-btn active" data-stars="3">★</span>
+              <span class="star-btn active" data-stars="4">★</span>
+              <span class="star-btn active" data-stars="5">★</span>
+            </div>
+            <input type="hidden" id="selectedStarScore" value="5">
+          </div>
+          <div class="form-group">
+            <label for="feedbackComment">Your Review & Comments</label>
+            <textarea id="feedbackComment" class="form-textarea" rows="3" placeholder="Tell us how the doctor handled your symptoms, diagnosis clarity, and overall care..." required></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" data-modal="modalPatientFeedback">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="btnSubmitFeedback">Submit Verified Review</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: Doctor Add Schedule Availability / Block Time -->
+  <div class="modal-backdrop" id="modalDocSchedule">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3>Add Schedule / Block Availability</h3>
+        <button class="modal-close-btn" data-modal="modalDocSchedule">&times;</button>
+      </div>
+      <form id="docScheduleForm">
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="schedDate">Date</label>
+            <input type="date" id="schedDate" class="form-input" required>
+          </div>
+          <div class="form-row-2">
+            <div class="form-group">
+              <label for="schedStartTime">Start Time</label>
+              <select id="schedStartTime" class="form-select" required>
+                <option value="09:00 AM">09:00 AM</option>
+                <option value="10:00 AM">10:00 AM</option>
+                <option value="11:00 AM">11:00 AM</option>
+                <option value="02:00 PM">02:00 PM</option>
+                <option value="03:00 PM">03:00 PM</option>
+                <option value="04:00 PM">04:00 PM</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="schedEndTime">End Time</label>
+              <select id="schedEndTime" class="form-select" required>
+                <option value="10:00 AM">10:00 AM</option>
+                <option value="11:00 AM">11:00 AM</option>
+                <option value="12:00 PM">12:00 PM</option>
+                <option value="03:00 PM">03:00 PM</option>
+                <option value="04:00 PM">04:00 PM</option>
+                <option value="05:00 PM">05:00 PM</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="schedStatus">Availability Status</label>
+            <select id="schedStatus" class="form-select" required>
+              <option value="Available">Available (Open for Patient Booking)</option>
+              <option value="Blocked">Blocked / Out of Clinic (Unavailable)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="schedNote">Reason / Clinical Note</label>
+            <input type="text" id="schedNote" class="form-input" placeholder="e.g. Operating Room Rounds or Conference">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" data-modal="modalDocSchedule">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="btnSaveScheduleSlot">Save Schedule</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: Patient Reschedule Appointment -->
+  <div class="modal-backdrop" id="modalRescheduleAppt">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 id="rescheduleModalTitle">Reschedule Consultation</h3>
+        <button class="modal-close-btn" data-modal="modalRescheduleAppt">&times;</button>
+      </div>
+      <form id="patientRescheduleForm">
+        <input type="hidden" id="rescheduleApptId">
+        <div class="modal-body">
+          <p id="rescheduleApptMeta" class="modal-desc">Select a new date and time slot for your appointment.</p>
+          <div class="form-group">
+            <label for="rescheduleNewDate">New Consultation Date</label>
+            <input type="date" id="rescheduleNewDate" class="form-input" required>
+          </div>
+          <div class="form-group">
+            <label for="rescheduleNewSlot">New Consultation Slot</label>
+            <select id="rescheduleNewSlot" class="form-select" required>
+              <option value="09:00 AM">09:00 AM</option>
+              <option value="09:30 AM">09:30 AM</option>
+              <option value="10:00 AM">10:00 AM</option>
+              <option value="10:30 AM">10:30 AM</option>
+              <option value="11:00 AM">11:00 AM</option>
+              <option value="11:30 AM">11:30 AM</option>
+              <option value="02:00 PM">02:00 PM</option>
+              <option value="02:30 PM">02:30 PM</option>
+              <option value="03:00 PM">03:00 PM</option>
+              <option value="03:30 PM">03:30 PM</option>
+              <option value="04:00 PM">04:00 PM</option>
+              <option value="04:30 PM">04:30 PM</option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" data-modal="modalRescheduleAppt">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="btnConfirmReschedule">Confirm Reschedule</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: Patient Full Medical Dossier -->
+  <div class="modal-backdrop" id="modalPatientDossier">
+    <div class="modal-dialog modal-dialog-lg">
+      <div class="modal-header">
+        <h3 id="patientDossierTitle">Patient Medical Dossier & History</h3>
+        <button class="modal-close-btn" data-modal="modalPatientDossier">&times;</button>
+      </div>
+      <div class="modal-body" id="patientDossierBody">
+        <!-- Rendered dynamically via JS -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline" onclick="window.print()">🖨️ Print Dossier</button>
+        <button type="button" class="btn btn-primary" data-modal="modalPatientDossier">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+{
+  "name": "online-healthcare-management-system",
+  "version": "1.0.0",
+  "description": "PulseCare - Online Healthcare Management System with Admin, Doctor, and Patient Dashboards",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "healthcare",
+    "hospital-management",
+    "doctor-portal",
+    "patient-portal",
+    "appointment-booking"
+  ],
+  "author": "Healthcare Systems Engineering Team",
+  "license": "MIT"
+}
